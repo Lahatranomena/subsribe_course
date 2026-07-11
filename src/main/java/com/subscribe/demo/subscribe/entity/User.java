@@ -1,9 +1,8 @@
 package com.subscribe.demo.subscribe.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.util.UUID;
+import lombok.*;
 
 @Entity
 @Table(name = "app_user")
@@ -14,19 +13,19 @@ import java.util.UUID;
 @Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private UUID id;
 
-    @Column(name = "firstname", nullable = false)
-    private String firstname;
+  @Column(name = "firstname", nullable = false)
+  private String firstname;
 
-    @Column(name = "lastname", nullable = false)
-    private String lastname;
+  @Column(name = "lastname", nullable = false)
+  private String lastname;
 
-    @Column(name = "username", nullable = false)
-    private String username;
+  @Column(name = "username", nullable = false)
+  private String username;
 
-    @Column(name = "email", nullable = false)
-    private String email;
+  @Column(name = "email", nullable = false)
+  private String email;
 }
