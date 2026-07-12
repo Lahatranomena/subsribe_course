@@ -11,6 +11,7 @@ import java.util.function.Consumer;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
@@ -20,6 +21,7 @@ public class SubscriptionConfirmedRequestService implements Consumer<Subscriptio
   private final Mailer mailer;
 
   @SneakyThrows
+  @Transactional
   @Override
   public void accept(SubscriptionConfirmedRequest event) {
     Subscribe subscribe = subscribeRepository.findById(event.getSubscribeId()).orElseThrow();
