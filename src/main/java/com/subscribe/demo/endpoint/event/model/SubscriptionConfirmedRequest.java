@@ -1,9 +1,8 @@
 package com.subscribe.demo.endpoint.event.model;
 
-import lombok.*;
-
 import java.time.Duration;
 import java.util.UUID;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -11,16 +10,16 @@ import java.util.UUID;
 @Builder
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public class SubscriptionConfirmedRequest extends PojaEvent{
-    private UUID id;
+public class SubscriptionConfirmedRequest extends PojaEvent {
+  private UUID subscribeId;
 
-    @Override
-    public Duration maxConsumerDuration() {
-        return Duration.ofSeconds(45);
-    }
+  @Override
+  public Duration maxConsumerDuration() {
+    return Duration.ofSeconds(45);
+  }
 
-    @Override
-    public Duration maxConsumerBackoffBetweenRetries() {
-        return Duration.ofSeconds(30);
-    }
+  @Override
+  public Duration maxConsumerBackoffBetweenRetries() {
+    return Duration.ofSeconds(30);
+  }
 }
