@@ -3,6 +3,7 @@ package com.subscribe.demo.service.event;
 import static java.io.File.createTempFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.hibernate6.Hibernate6Module;
 import com.subscribe.demo.endpoint.event.model.SubscriptionConfirmedRequest;
 import com.subscribe.demo.file.bucket.BucketComponent;
 import com.subscribe.demo.mail.Email;
@@ -26,7 +27,14 @@ public class SubscriptionConfirmedRequestService implements Consumer<Subscriptio
   private final SubscriptionRepository subscribeRepository;
   private final Mailer mailer;
   private final BucketComponent bucketComponent;
-  private final ObjectMapper objectMapper = new ObjectMapper();
+
+  private final ObjectMapper objectMapper = createObjectMapper();
+
+  private static ObjectMapper createObjectMapper() {
+    var mapper = new ObjectMapper();
+    mapper.registerModule(new Hibernate6Module());
+    return mapper;
+  }
 
   @SneakyThrows
   @Transactional
