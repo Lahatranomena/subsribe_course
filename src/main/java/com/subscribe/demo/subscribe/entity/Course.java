@@ -1,8 +1,11 @@
 package com.subscribe.demo.subscribe.entity;
 
+
 import jakarta.persistence.*;
-import java.time.Instant;
 import lombok.*;
+
+import java.time.Instant;
+import java.util.UUID;
 
 @Entity
 @Table(name = "course")
@@ -15,7 +18,7 @@ import lombok.*;
 public class Course {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
-  private Long id;
+  private UUID id;
 
   @Column(name = "title", nullable = false)
   private String title;
